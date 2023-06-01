@@ -14,10 +14,11 @@ function displayNotification(){
 }
 
 function flashTerminal(on = false, i = 60){
-    if(i < 0) return
 
     if(on){
         process.stdout.write(MESSAGE);
+        
+        if(i < 0) return
     } else {
         readline.clearLine(process.stdout, 0);
         readline.cursorTo(process.stdout, 0);
