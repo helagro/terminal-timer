@@ -1,19 +1,19 @@
-const { exec } = require("child_process")
-const readline = require("readline")
-const sound = require("play-sound")((opts = {}))
+import { exec } from "child_process"
+import readline from "readline"
+import sound from "play-sound"
+import * as process from "process"
 
+const player = sound()
 const MESSAGE = "Time is up!"
 
-function notify() {
+export function notify() {
     displayNotification()
     flashTerminal()
     playSound()
 }
 
 function displayNotification() {
-    exec(
-        `osascript -e 'display notification "${MESSAGE}" with title "Terminal Timer"'`
-    ) //Mac only
+    exec(`osascript -e 'display notification "${MESSAGE}" with title "Terminal Timer"'`) //Mac only
 }
 
 function flashTerminal(on = false, i = 60) {
@@ -30,9 +30,7 @@ function flashTerminal(on = false, i = 60) {
 }
 
 function playSound() {
-    sound.play("funk.mp3", function (err) {
+    player.play("funk.mp3", function (err) {
         if (err) throw err
     })
 }
-
-module.exports = { notify }
