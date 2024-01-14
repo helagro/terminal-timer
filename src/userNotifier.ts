@@ -1,10 +1,10 @@
-import { exec } from "child_process"
-import readline from "readline"
-import sound from "play-sound"
-import * as process from "process"
+import { exec } from 'child_process'
+import readline from 'readline'
+import sound from 'play-sound'
+import * as process from 'process'
 
 const player = sound()
-const MESSAGE = "Time is up!"
+const MESSAGE = 'Time is up!'
 
 export function notify() {
     displayNotification()
@@ -30,7 +30,7 @@ function flashTerminal(on = false, i = 60) {
 }
 
 function playSound() {
-    player.play("funk.mp3", function (err) {
+    player.play('../sound/funk.mp3', function (err: any) {
         if (err) throw err
     })
 }
